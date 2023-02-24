@@ -1,4 +1,4 @@
-import { client } from "../allControllers.js";
+import { client } from "../helperFunctions.js";
 
 export async function getUser(req, res){
    
