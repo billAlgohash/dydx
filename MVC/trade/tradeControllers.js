@@ -241,7 +241,7 @@ export async function cancelAllOrders (req, res){
 
 export async function cancelActiveOrders (req, res){
 
-    const data = req.body
+    const data = req.query
     // console.log(data)
 
 

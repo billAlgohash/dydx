@@ -1,0 +1,487 @@
+{
+    "info": {
+        "name": "DyDx",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "User Requests",
+            "item": [
+                {
+                    "name": "Get User Active Links",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{BACKEND_URL}}/user/getUserActiveLinks",
+                            "path": [
+                                "user",
+                                "getUserActiveLinks"
+                            ],
+                            "host": [
+                                "{{backend_url}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get User",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{BACKEND_URL}}/user/getUser",
+                            "path": [
+                                "user",
+                                "getUser"
+                            ],
+                            "host": [
+                                "{{backend_url}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get User Pending Link Requests",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{BACKEND_URL}}/user/getUserPendingLinkRequests",
+                            "path": [
+                                "user",
+                                "getUserPendingLinkRequests"
+                            ],
+                            "host": [
+                                "{{backend_url}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Send User Link",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "{{BACKEND_URL}}/user/sendUserLinkRequest",
+                            "path": [
+                                "user",
+                                "sendUserLinkRequest"
+                            ],
+                            "host": [
+                                "{{backend_url}}"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"action\": \"REMOVE\",\n  \"address\": \"0x0913017c740260fea4b2c62828a4008ca8b0d6e4\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Update User",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "{{BACKEND_URL}}/user/updateUser",
+                            "path": [
+                                "user",
+                                "updateUser"
+                            ],
+                            "host": [
+                                "{{backend_url}}"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"email\": \"user@example.com\",\n  \"username\": \"username\",\n  \"isSharingEmail\": false,\n  \"isSharingAddress\": false,\n  \"userData\": {},\n  \"country\": \"SG\",\n  \"languageCode\": \"en\"\n \n}"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Trade Requests",
+            "item": [
+                {
+                    "name": "Get Account",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{BACKEND_URL}}/trade/getAccount/0xC955AaF9D123cBf42B5419bD111eaa302feCAdD0",
+                            "path": [
+                                "trade",
+                                "getAccount",
+                                "0xC955AaF9D123cBf42B5419bD111eaa302feCAdD0"
+                            ],
+                            "host": [
+                                "{{backend_url}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get All Accounts",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{BACKEND_URL}}/trade/getAccounts",
+                            "path": [
+                                "trade",
+                                "getAccounts"
+                            ],
+                            "host": [
+                                "{{backend_url}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Positions",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{BACKEND_URL}}/trade/getPositions?market=BTC-USD&status=OPEN",
+                            "query": [
+                                {
+                                    "key": "market",
+                                    "value": "BTC-USD"
+                                },
+                                {
+                                    "key": "status",
+                                    "value": "OPEN"
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "createdBeforeOrAt",
+                                    "value": "",
+                                    "disabled": true
+                                }
+                            ],
+                            "variable": [],
+                            "path": [
+                                "trade",
+                                "getPositions"
+                            ],
+                            "host": [
+                                "{{backend_url}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Transfers",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{BACKEND_URL}}/trade/getTransfers?transferType=DEPOSIT&limit=50",
+                            "query": [
+                                {
+                                    "key": "transferType",
+                                    "value": "DEPOSIT"
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "50"
+                                },
+                                {
+                                    "key": "createdBeforeOrAt",
+                                    "value": "",
+                                    "disabled": true
+                                }
+                            ],
+                            "variable": [],
+                            "path": [
+                                "trade",
+                                "getTransfers"
+                            ],
+                            "host": [
+                                "{{backend_url}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Orders",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{BACKEND_URL}}/trade/getOrders?market=BTC-USD&status=OPEN&side=SELL&type=LIMIT&limit=50",
+                            "query": [
+                                {
+                                    "key": "market",
+                                    "value": "BTC-USD"
+                                },
+                                {
+                                    "key": "status",
+                                    "value": "OPEN"
+                                },
+                                {
+                                    "key": "side",
+                                    "value": "SELL"
+                                },
+                                {
+                                    "key": "type",
+                                    "value": "LIMIT"
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "50"
+                                }
+                            ],
+                            "variable": [],
+                            "path": [
+                                "trade",
+                                "getOrders"
+                            ],
+                            "host": [
+                                "{{backend_url}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Active Orders",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{BACKEND_URL}}/trade/getOrders?market=BTC-USD&side=SELL",
+                            "query": [
+                                {
+                                    "key": "market",
+                                    "value": "BTC-USD"
+                                },
+                                {
+                                    "key": "side",
+                                    "value": "SELL"
+                                }
+                            ],
+                            "variable": [],
+                            "path": [
+                                "trade",
+                                "getOrders"
+                            ],
+                            "host": [
+                                "{{backend_url}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Fills",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{BACKEND_URL}}/trade/getFills?market=BTC-USD",
+                            "query": [
+                                {
+                                    "key": "market",
+                                    "value": "BTC-USD"
+                                }
+                            ],
+                            "variable": [],
+                            "path": [
+                                "trade",
+                                "getFills"
+                            ],
+                            "host": [
+                                "{{backend_url}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Funding Payments",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{BACKEND_URL}}/trade/getFundingPayments?market=BTC-USD&limit=75",
+                            "query": [
+                                {
+                                    "key": "market",
+                                    "value": "BTC-USD"
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "75"
+                                }
+                            ],
+                            "variable": [],
+                            "path": [
+                                "trade",
+                                "getFundingPayments"
+                            ],
+                            "host": [
+                                "{{backend_url}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Private Profile",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{BACKEND_URL}}/trade/getProfilePrivate",
+                            "path": [
+                                "trade",
+                                "getProfilePrivate"
+                            ],
+                            "host": [
+                                "{{backend_url}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Create Account Request",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "{{BACKEND_URL}}/trade/createAccount",
+                            "path": [
+                                "trade",
+                                "createAccount"
+                            ],
+                            "host": [
+                                "{{backend_url}}"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"starkKey\": \"701234abcd\", \n  \"starkKeyYCoordinate\":\"1234abcd\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Create Fast Withdrawal",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "{{BACKEND_URL}}/trade/createFastWithdrawal",
+                            "path": [
+                                "trade",
+                                "createFastWithdrawal"
+                            ],
+                            "host": [
+                                "{{backend_url}}"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{  \n    \"creditAsset\": \"USDC\",\n    \"creditAmount\": \"100\",\n    \"debitAmount\": \"110\",\n    \"toAddress\": \"0x98ab...\",\n    \"lpPositionId\": \"2\",\n    \"expiration\":\"2023-03-28\",\n    \"clientId\": \"client ID\",\n    \"signature\": \"0abc12...\"\n}\n"
+                        }
+                    }
+                },
+                {
+                    "name": "Create Order",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "{{BACKEND_URL}}/trade/createOrder",
+                            "path": [
+                                "trade",
+                                "createOrder"
+                            ],
+                            "host": [
+                                "{{backend_url}}"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{  \n  \"data\":\n    {\n      \"side\": \"SELL\",\n      \"type\": \"LIMIT\",\n      \"timeInForce\": \"GTT\",\n      \"postOnly\": false,\n      \"size\": \"100\",\n      \"price\": \"18000\",\n      \"limitFee\": \"0.015\",\n      \"expiration\": \"2023-12-21T21:30:20.200Z\"\n    },\n  \"positionId\":\"1334\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Cancel Order",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "{{BACKEND_URL}}/trade/cancelOrder/0x0000",
+                            "path": [
+                                "trade",
+                                "cancelOrder",
+                                "0x0000"
+                            ],
+                            "host": [
+                                "{{backend_url}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Cancel All Orders",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "{{BACKEND_URL}}/trade/cancelAllOrders/BTC-USD",
+                            "path": [
+                                "trade",
+                                "cancelAllOrders",
+                                "BTC-USD"
+                            ],
+                            "host": [
+                                "{{backend_url}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Cancel Active Orders",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "{{BACKEND_URL}}/trade/cancelActiveOrders?market=BTC-USD&side=SELL",
+                            "query": [
+                                {
+                                    "key": "market",
+                                    "value": "BTC-USD"
+                                },
+                                {
+                                    "key": "side",
+                                    "value": "SELL"
+                                }
+                            ],
+                            "variable": [],
+                            "path": [
+                                "trade",
+                                "cancelActiveOrders"
+                            ],
+                            "host": [
+                                "{{backend_url}}"
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

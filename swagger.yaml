@@ -1,0 +1,663 @@
+openapi: 3.0.0
+info:
+  title: DyDx Api
+  description: ''
+  contact: {}
+  version: '2.0'
+servers:
+- url: https://api.dydx.exchange
+  variables: {}
+paths:
+  /user/getUserActiveLinks:
+    get:
+      tags:
+      - User Requests
+      summary: Get User Active Links
+      operationId: GetUserActiveLinks
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /user/getUser:
+    get:
+      tags:
+      - User Requests
+      summary: Get User
+      operationId: GetUser
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /user/getUserPendingLinkRequests:
+    get:
+      tags:
+      - User Requests
+      summary: Get User Pending Link Requests
+      operationId: GetUserPendingLinkRequests
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /user/sendUserLinkRequest:
+    post:
+      tags:
+      - User Requests
+      summary: Send User Link
+      operationId: SendUserLink
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/SendUserLinkRequest'
+              - example:
+                  action: REMOVE
+                  address: 0x0913017c740260fea4b2c62828a4008ca8b0d6e4
+            example:
+              action: REMOVE
+              address: 0x0913017c740260fea4b2c62828a4008ca8b0d6e4
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /user/updateUser:
+    post:
+      tags:
+      - User Requests
+      summary: Update User
+      operationId: UpdateUser
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UpdateUserRequest'
+              - example:
+                  email: user@example.com
+                  username: username
+                  isSharingEmail: false
+                  isSharingAddress: false
+                  userData: {}
+                  country: SG
+                  languageCode: en
+            example:
+              email: user@example.com
+              username: username
+              isSharingEmail: false
+              isSharingAddress: false
+              userData: {}
+              country: SG
+              languageCode: en
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /trade/getAccount/{address}:
+    parameters:
+      - in: path
+        name: address
+        schema:
+          type: string
+        required: true
+        description: The user ID
+    get:
+      tags:
+      - Trade Requests
+      summary: Get Account
+      operationId: GetAccount
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /trade/getAccounts:
+    get:
+      tags:
+      - Trade Requests
+      summary: Get All Accounts
+      operationId: GetAllAccounts
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /trade/getPositions:
+    get:
+      tags:
+      - Trade Requests
+      summary: Get Positions
+      operationId: GetPositions
+      parameters:
+      - name: market
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: BTC-USD
+      - name: status
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: OPEN
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /trade/getTransfers:
+    get:
+      tags:
+      - Trade Requests
+      summary: Get Transfers
+      operationId: GetTransfers
+      parameters:
+      - name: transferType
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: DEPOSIT
+      - name: limit
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          example: 50
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /trade/getOrders:
+    get:
+      tags:
+      - Trade Requests
+      summary: Get Orders
+      operationId: GetOrders
+      parameters:
+      - name: market
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: BTC-USD
+      - name: status
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: OPEN
+      - name: side
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: SELL
+      - name: type
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: LIMIT
+      - name: limit
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          example: 50
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /trade/getFills:
+    get:
+      tags:
+      - Trade Requests
+      summary: Get Fills
+      operationId: GetFills
+      parameters:
+      - name: market
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: BTC-USD
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /trade/getFundingPayments:
+    get:
+      tags:
+      - Trade Requests
+      summary: Get Funding Payments
+      operationId: GetFundingPayments
+      parameters:
+      - name: market
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: BTC-USD
+      - name: limit
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          example: 75
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /trade/getProfilePrivate:
+    get:
+      tags:
+      - Trade Requests
+      summary: Get Private Profile
+      operationId: GetPrivateProfile
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /trade/createAccount:
+    post:
+      tags:
+      - Trade Requests
+      summary: Create Account Request
+      operationId: CreateAccountRequest
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CreateAccountRequestRequest'
+              - example:
+                  starkKey: 701234abcd
+                  starkKeyYCoordinate: 1234abcd
+            example:
+              starkKey: 701234abcd
+              starkKeyYCoordinate: 1234abcd
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /trade/createFastWithdrawal:
+    post:
+      tags:
+      - Trade Requests
+      summary: Create Fast Withdrawal
+      operationId: CreateFastWithdrawal
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CreateFastWithdrawalRequest'
+              - example:
+                  creditAsset: USDC
+                  creditAmount: '100'
+                  debitAmount: '110'
+                  toAddress: 0x98ab...
+                  lpPositionId: '2'
+                  expiration: 2023-03-28
+                  clientId: client ID
+                  signature: 0abc12...
+            example:
+              creditAsset: USDC
+              creditAmount: '100'
+              debitAmount: '110'
+              toAddress: 0x98ab...
+              lpPositionId: '2'
+              expiration: 2023-03-28
+              clientId: client ID
+              signature: 0abc12...
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /trade/createOrder:
+    post:
+      tags:
+      - Trade Requests
+      summary: Create Order
+      operationId: CreateOrder
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CreateOrderRequest'
+              - example:
+                  data:
+                    side: SELL
+                    type: LIMIT
+                    timeInForce: GTT
+                    postOnly: false
+                    size: '100'
+                    price: '18000'
+                    limitFee: '0.015'
+                    expiration: 2023-12-21T21:30:20.200Z
+                  positionId: '1334'
+            example:
+              data:
+                side: SELL
+                type: LIMIT
+                timeInForce: GTT
+                postOnly: false
+                size: '100'
+                price: '18000'
+                limitFee: '0.015'
+                expiration: 2023-12-21T21:30:20.200Z
+              positionId: '1334'
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /trade/cancelOrder/{orderId}:
+    parameters:
+      - in: path
+        name: orderId
+        schema:
+          type: string
+        required: true
+        description: Order Id
+    delete:
+      tags:
+      - Trade Requests
+      summary: Cancel Order
+      operationId: CancelOrder
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /trade/cancelAllOrders/{market}:
+    parameters:
+      - in: path
+        name: market
+        schema:
+          type: string
+        required: true
+        description: Market
+    delete:
+      tags:
+      - Trade Requests
+      summary: Cancel All Orders
+      operationId: CancelAllOrders
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /trade/cancelActiveOrders:
+    delete:
+      tags:
+      - Trade Requests
+      summary: Cancel Active Orders
+      operationId: CancelActiveOrders
+      parameters:
+      - name: market
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: BTC-USD
+      - name: side
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: SELL
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+components:
+  schemas:
+    SendUserLinkRequest:
+      title: SendUserLinkRequest
+      required:
+      - action
+      - address
+      type: object
+      properties:
+        action:
+          type: string
+        address:
+          type: string
+      example:
+        action: REMOVE
+        address: 0x0913017c740260fea4b2c62828a4008ca8b0d6e4
+    UpdateUserRequest:
+      title: UpdateUserRequest
+      required:
+      - email
+      - username
+      - isSharingEmail
+      - isSharingAddress
+      - userData
+      - country
+      - languageCode
+      type: object
+      properties:
+        email:
+          type: string
+        username:
+          type: string
+        isSharingEmail:
+          type: boolean
+        isSharingAddress:
+          type: boolean
+        userData:
+          type: object
+        country:
+          type: string
+        languageCode:
+          type: string
+      example:
+        email: user@example.com
+        username: username
+        isSharingEmail: false
+        isSharingAddress: false
+        userData: {}
+        country: SG
+        languageCode: en
+    CreateAccountRequestRequest:
+      title: CreateAccountRequestRequest
+      required:
+      - starkKey
+      - starkKeyYCoordinate
+      type: object
+      properties:
+        starkKey:
+          type: string
+        starkKeyYCoordinate:
+          type: string
+      example:
+        starkKey: 701234abcd
+        starkKeyYCoordinate: 1234abcd
+    CreateFastWithdrawalRequest:
+      title: CreateFastWithdrawalRequest
+      required:
+      - creditAsset
+      - creditAmount
+      - debitAmount
+      - toAddress
+      - lpPositionId
+      - expiration
+      - clientId
+      - signature
+      type: object
+      properties:
+        creditAsset:
+          type: string
+        creditAmount:
+          type: string
+        debitAmount:
+          type: string
+        toAddress:
+          type: string
+        lpPositionId:
+          type: string
+        expiration:
+          type: string
+        clientId:
+          type: string
+        signature:
+          type: string
+      example:
+        creditAsset: USDC
+        creditAmount: '100'
+        debitAmount: '110'
+        toAddress: 0x98ab...
+        lpPositionId: '2'
+        expiration: 2023-03-28
+        clientId: client ID
+        signature: 0abc12...
+    CreateOrderRequest:
+      title: CreateOrderRequest
+      required:
+      - data
+      - positionId
+      type: object
+      properties:
+        data:
+          allOf:
+          - $ref: '#/components/schemas/Data'
+          - {}
+        positionId:
+          type: string
+      example:
+        data:
+          side: SELL
+          type: LIMIT
+          timeInForce: GTT
+          postOnly: false
+          size: '100'
+          price: '18000'
+          limitFee: '0.015'
+          expiration: 2023-12-21T21:30:20.200Z
+        positionId: '1334'
+    Data:
+      title: Data
+      required:
+      - side
+      - type
+      - timeInForce
+      - postOnly
+      - size
+      - price
+      - limitFee
+      - expiration
+      type: object
+      properties:
+        side:
+          type: string
+        type:
+          type: string
+        timeInForce:
+          type: string
+        postOnly:
+          type: boolean
+        size:
+          type: string
+        price:
+          type: string
+        limitFee:
+          type: string
+        expiration:
+          type: string
+      example:
+        side: SELL
+        type: LIMIT
+        timeInForce: GTT
+        postOnly: false
+        size: '100'
+        price: '18000'
+        limitFee: '0.015'
+        expiration: 2023-12-21T21:30:20.200Z
+tags:
+- name: User Requests
+- name: Trade Requests
