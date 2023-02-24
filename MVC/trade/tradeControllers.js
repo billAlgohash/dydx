@@ -1,5 +1,10 @@
 import { client } from "../helperFunctions.js"
 
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const {ETHEREUM_PRIVATE_KEY} = process.env
 
 export async function getAccount (req, res){
 
@@ -184,12 +189,25 @@ export async function createFastWithdrawal (req, res){
 export async function createOrder (req, res){
 
     let {data,positionId} = req.body
+    const address ="0xC955AaF9D123cBf42B5419bD111eaa302feCAdD0"
 
-    const {signature} = await client.private.getRegistration()
+    const {privateKey} = await client.onboarding.deriveStarkKey(address);
+
+
+    const timestamp = new Date().toISOString()
+
+
+    const signature =  client.private.sign({
+        requestPath:'/v3/orders',
+        method:'POST',
+        body:privateKey,
+        timestamp:timestamp
+
+    })
 
     data = {...data,signature:signature}
 
-    // console.log(data)
+    console.log(data)
 
 
     try{
@@ -198,9 +216,9 @@ export async function createOrder (req, res){
         res.status(200).json(result)
 
     }catch(err){
-        console.log(err)
+        // console.log(err)
 
-        res.status(err.status).json(err)
+        res.status(500).json(err)
     }
 
 }

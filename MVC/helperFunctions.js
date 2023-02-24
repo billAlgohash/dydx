@@ -23,6 +23,7 @@ web3.eth.accounts.wallet.add(ETHEREUM_PRIVATE_KEY)
 export const client = new DydxClient(HTTP_HOST, { web3 })
 const apiCreds = await client.onboarding.recoverDefaultApiCredentials(address)
 client.apiKeyCredentials = apiCreds
+// console.log(client)
 
 async function httpRequest (endpoint,method="GET",data){
 
